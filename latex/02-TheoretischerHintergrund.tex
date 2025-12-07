@@ -2,11 +2,29 @@
 \label{sec:Hintergrund}
 
 Obwohl die Systeme rund um "`Container"' in vielen Unternehmen weltweit eingesetzt werden und vor Allem bei IT-Firmen als der Standard für Anwendungsadministration gesehen werden \todotext{Quelle: https://www.docker.com/blog/2025-docker-state-of-app-dev/}, kann deren Komplexität und Umfang für Außenstehende überfordernd sein.
-Um die nachfolgenden 
+Um die Fallstudie dieser Arbeit in den richtigen Kontext zu bringen, werden nachfolgend einige Fachbegriffe aus der modernen Softwareentwicklung und Anwendungsadministration beschrieben.
 
 \section{Cloudnative Anwendungslandschaft}
+
+Die "`\acl{CNCF}"'\todotext{Quelle: https://www.cncf.io/about/who-we-are/} definiert Cloudnative Anwendungen wie gefolgt:
+\begin{displayquote}
+Cloud native Technologien ermöglichen es Unternehmen, skalierbare Anwendungen in modernen, dynamischen Umgebungen zu implementieren und zu betreiben. Dies können öffentliche, private und Hybrid-Clouds sein. Best Practices, wie Container, Service-Meshs, Microservices, immutable Infrastruktur und deklarative APIs, unterstützen diesen Ansatz.
+\end{displayquote}\todotext{Quelle: https://github.com/cncf/toc/blob/main/DEFINITION.md#deutsch}
+
+Diese Technologien sind vielfältig und werden durch die \acs{CNCF} in unterschiedlichen Phasen basierend auf Reifegraden finanziell und organisatorisch unterstützt.
+Der Fokus bei diesen Anwendung liegt auf der Betreibung von Microservices.
+
 \subsection{Microservices}
+Als Gegenstück zu "Monolith"-Anwendungen, bei denen alle Teile einer Anwendung zu einem Paket zusammengesteckt und gestartet werden, bieten Microservices die Möglichkeit eine Anwendung in kleinere Bestandteile zu zerlegen.
+Vorteile hierbei sind eine effektivere Skalierbarkeit, Fehlerisolation und Flexibilität in Teams.
+Dadurch dass diese Anwendungsform standardmäßig jedem Programmteil seine eigene Umgebung und eigene Rechenressourcen reserviert, können diese Ressourcen individuell vertikal und horizontal skaliert werden und behindern nicht die Prozessorleistung oder den Arbeitsspeicherplatz der anderen Teile.
+Eine Verteilung einer Anwendung auf mehrere Hardwareserver, was im Falle von Kubernetes einfach umsetzbar ist, bietet außerdem niederschwellige Redundanzen für Ausfallsicherheit.
+Unterschiedliche Microservices können außerdem in unterschiedlichen Programmiersprachen geschrieben werden, was Entwicklerteams erlaubt aus Erfahrung zu unterschiedlichen Domänen, Sprachen und Bibliotheken zu schöpfen.
+
 \subsection{Containerumgebungen}
+Die Laufzeitumgebungen von Microservices basieren zum größten Teil auf Linux-Containern. WebAssembly und das WebAssembly System Interface(WASI) bieten eine Alternative, sind jedoch deutlich weniger verbreitet.
+
+
 \subsection{Kubernetes}
 
 \section{Open Source BI-Lösungen}
