@@ -1,0 +1,46 @@
+%Literatur einfügen     \cite[S.3]{bibkey} 
+% In JabRef die zu zitierende Quelle auswählen und STRG+L (z.B. bei Verwendun von TeXstudio) oder STRG+K (hier wird direkt "\cite{bibkey}" kopiert) drücken. Dann mit STRG+V an der Stelle einfügen, an welcher man den Literaturverweis einfügen möchte.
+%\section*{Spervermerk} Nicht sichtbares Kapitel in der Gliederung
+
+% In TeXstudio
+% Strg+T  Kommentiert Abschnitte oder Zeilen aus 
+% Strg+U  Entfernt die auskommentierung
+
+
+\chapter{Einleitung}
+\label{sec:Einleitung} %Textmarke/Positionsmarke, um mit Autoref darauf zu verweisen.
+
+Die Geschichte der \acl{BI} reicht weiter in die Vergangenheit zurück als moderne Informationssysteme, obwohl die beiden Begriffe in gegenwärtigen Diskussionen oft synonym miteinander verwendet werden.\todotext{Quelle: Historische Fragmente einer Integrationsdisziplin – Beitrag zur Konstruktgeschichte der Business Intelligence}
+Vor dem Hintergrund, dass alle Wirtschaftssektoren jedoch mittlerweile mit IT-Systemen verwickelt sind und bestimmte Branchen wie das Gesundheits- oder Finanzwesen überwältigend von diesen abhängig sind\todotext{Quelle: https://www.sciencedirect.com/science/article/pii/S0166497222001304}, ist die Auswertung der Effizienz und Resilienz von betrieblichen Prozessen durch Computer und Netzwerke nicht mehr
+wegzudenken.
+Damit \acs{BI}-Lösungen den aktuellen Stand von Business Prozessen abbilden können, müssen sie mit der technischen Implementierung der Prozesse kompatibel sein. In diesem Bereich hat sich in den letzten 20 Jahren einiges getan.
+Entwickler und Anwendungsadministratoren konnten in diesem Zeitraum viele Paradigmenveränderungen durch virtuelle Maschinen, Containerisierung und Clouddienste beobachten und zu diesen beitragen.
+Die moderne IT-Infrastrukturlandschaft ist vor allem seit der Veröffentlichung von Container-Engines wie Docker und Container-Orchestrierungsplattformen wie Kubernetes eine komplett andere wie zu Hochzeiten der Bare-Metal-Server, Terminalserver und Mainframes.
+
+Um mit diesen Veränderungen schritthalten zu können, haben BI-Anwendungen wie Prometheus(Metriken, 2012), Grafana(Dashboards, 2014) oder Metabase(Datenbankvisualisierung, 2015) vorgefertigte Formate für diese neueren Plattformen veröffentlicht.
+Metabase bietet neben dem eigenen Clouddienst direkt Anleitungen für Self-Hosting per Docker Container. Prometheus und Grafana sind sogar in einem gemeinsamen "Helm-Chart" namens "kube-prometheus-stack" verpackt. Helm ist ein Paketmanager für Kubernetes Anwendungen und vereinfacht es Nutzern komplexe Anwendungen mit mehreren Kubernetes Ressourcen zu installieren.
+Alle diese Produkte sind aber grundlegend plattformagnostisch, was zwar zu mehr Flexibilität aber auch geringerer Intergration mit der Plattform führt. Da Kubernetes als modernes Produktivsystem jedoch eine professionelle und frei erweiterbare \acs{API} bietet, kann diese potenziell genutzt werden um direkt BI-Lösungen zu deklarieren.
+
+Ein weiterer Schwachpunkt von etablierten BI-Lösungen, der vor Allem bei Prometheus und Grafana auffällt, ist die hohe Komplexität bei der Erstellung von übersichtlichen Dashboards.
+Prometheus sammelt Metriken aus sämmtlichen Anwendungen die diese standardmäßig anbieten, jedoch wird hierbei keine Beschreibung mitgeliefert, was die Metriken genau bedeuten oder wie diese bestenfalls in einem Dashboard visualisiert werden können.
+Falls also kein fertiges Dashboard von den Entwicklern einer Anwendung mitgeliefert wird, fällt die Arbeit dieses zu entwickeln auf die Endnutzer.
+Da Teammitglieder, die diese Metriken für geschäftsbezogene Entscheidungen verwenden nicht immer speziell geschult sind, kommen Infrastrukturadminstratoren oder ein DevOps-Team für technische Defizite auf und implementieren die Visualisierungen.
+Idealerweise ist die Überwachung von Anwendungen so einfach präsentiert, dass ungeschultes Personal die Erstellung von Dashboards intuitiv lernen kann.\todotext{Quelle: Microsoft Power BI oder so}
+
+\section{Problemstellung}
+Da Kubernetes ein beliebtes Kompilierungsziel für Business Intelligence Anwendungen ist, aber diese Anwendungen die Möglichkeiten einer tiefen Integration, die durch den offenen Quellcode erreichbar ist, nicht ausnutzen, soll in dieser Arbeit durch eine Fallstudie untersucht werden ob eine direkte Erweiterung der Kubernetes API dabei helfen kann eine intuitive Datenwertschöpfung für Endnutzer zu ermöglichen.
+
+Folgende Forschungsfrage soll in dieser Arbeit beantwortet werden:
+"`Können im Cloudnative Bereich Self-Service Paradigmen der Anwendungsentwicklung auf Business Intelligence ausgeweitet werden um Endnutzern eine einfachere Erfahrung bei der Überwachung von Diensten zu ermöglichen`"
+
+
+\section{Lösungsansatz}
+\label{sec:loesungsansatz}
+Durch explorative Auseinandersetzung mit Design Mustern für Kubernetes-Erweiterungen, soll überprüft werden ob Best Practices bei deren Entwicklung dabei helfen können eine flüssigere und simplere BI-Pipeline zu entwickeln.
+Es soll festgestellt werden ob Nutzern durch weniger Abstraktionsschichten die Erstellung von Dashboards vereinfacht werden kann.
+Die Ergebnisse dieser Fallstudie sollen dabei helfen zukünftige Monitoringlösungen für Kubernetes und ähnliche Orchestrierungsplattformen zu konzipieren.
+
+\section{Aufbau der Arbeit}
+Vorerst werden grundlegende Begriffe aus dem Containerökosystem erklärt und darauf aufgebaut, wie aktuelle BI-Lösungen mit ihren Aufgaben umgehen.
+Anschließend wird anhand einer Fallstudie eine beispielhafte Anwendung geschrieben, die nachfolgend auf Schwachstellen und Vorteile bewertet wird.
+Zuletzt werden die daraus resultierenden Ergebnisse kritisch gewürdigt und die Forschungsfrage bestätigt oder widerlegt.

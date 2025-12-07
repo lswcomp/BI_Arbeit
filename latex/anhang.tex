@@ -1,0 +1,53 @@
+\chapter{Google Platform Status}
+\label{gps}
+
+BigQuery-Abfrage:
+\begin{verbatim}    
+#standardSQL
+SELECT date, client, pct_urls, sample_urls
+FROM `httparchive.blink_features.usage`
+WHERE feature = 'WebAssemblyInstantiation'
+AND date = (
+  SELECT MAX(date) 
+  FROM `httparchive.blink_features.usage`
+)
+ORDER BY date DESC, client
+\end{verbatim}
+
+\chapter{Konferenzvorträge}
+\label{conf}
+
+\begin{tabular}{ m{0.8cm} m{2.5cm} m{3cm} m{6cm}}
+    Jahr & Konferenz & Vortragende Person & Titel \\
+    \hline
+    2017 & dotJS &  Sean Larkin & {Webpack+WebAssembly:\newline Under the hood} \\
+    & JSConf EU &  Lin Clark & A Cartoon Intro to WebAssembly \\
+    & JSConf EU &  Dan Callahan & Practical WebAssembly \\
+    & GOTO &  Ben Smith & We Want WebAssembly \\
+    \hline
+    2018 & dotJS &  Tejas Kumar &  A Quick Recap on WebAssembly \\
+    & JSConf EU &  Emil Bay & Hand-crafting WebAssembly \\
+    & JSConf EU &  Lin Clark & {Baby’s First Rust+WebAssembly \newline module} \\
+    & JSConf Asia &  David Bryant & Enabling New Web Experiences \\
+    & JSUnconf & Johann Hofmann & Putting WebAssembly in your web app today! \\
+    & GOTO &  Lin Clark & A Cartoon Quest: New Adventures for WebAssembly \\
+    \hline
+    2019 & dotJS &  Vlad Filippov & Into WebAssembly \\
+    & dotJS & Sven Sauleau & More WebAssembly in your JavaScript \\
+    & JSConf EU & Max Bittker & Simulating Sand: Building Interactivity With WebAssembly \\
+    & JSConf Korea & Istvan Szmozsanszky & A WebAssembly Field Guide easily worth like 70 bottle caps \\
+    & JSConf Asia & Kas Perch & WebAssembly: The Future of JS and a Multi-Language Web \\
+    & JSConf US & Florian Rival & {Native Web Apps: React, JS \& \newline WebAssembly to rewrite native apps} \\
+    & JSConf Hawaii & {Lin Clark /\newline Till Schneidereit} & New Adventures for WASM \\
+    & GOTO & Dan Callahan & WebAssembly Beyond the Browser \\
+    \hline
+    2023 & GOTO & Brian Carroll & {WebAssembly in Production:\newline A Compiler in a Web Page} \\
+    & YOW! & Katie Bell & {Don't Trust Anything!\newline Real-world Uses For WebAssembly} \\
+    \hline
+    2024 & dotJS & David Flanagan & {The Future of Serverless is \newline WebAssembly}
+\end{tabular}
+
+\chapter{R-Skript}
+\label{sec:rSkript}
+
+% \lstinputlisting[language=R]{skript.R}
